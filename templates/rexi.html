@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="/javascript/javascript.js"></script>
+	<script type="text/javascript" src="/javascript/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+	<meta charset="UTF-8">
+	<title>Escaneo de informacion</title>
+</head>
+<body>
+	{%if test%}
+		{{test}}
+	{%endif%}
+	{%if verification and encontrada and rexi%}
+		<table class="tg" id="tablaHTML">
+		  <th class="tg-okog" colspan="4">Valores fijos</th>
+		  <tr>
+		    <td class="tg-pxng">ID</td>
+		    <td class="tg-pxng" id="idRexi" colspan="3"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Tarjeta de crédito</td>
+		    <td class="tg-pxng" id="nameRexi" colspan="3"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Institución financiera</td>
+		    <td class="tg-pxng" id="bankNameRexi" colspan="3"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Marca</td>
+		    <td class="tg-pxng" id="marcaRexi" colspan="3"></td>
+		  </tr>
+		  <tr>
+		    <th class="tg-okog">Características para comparación</th>
+		    <th class="tg-okog">Pública</th>
+		    <th class="tg-okog">En Rexi</th>
+		    <th class="tg-okog">Status</th>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Facturación</td>
+		    <td class="tg-pxng" id="facturacionPublica"></td>
+		    <td class="tg-pxng" id="facturacionRexi"></td>
+		    <td class="tg-pxng" id="facturacionStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Días de vencimiento después del corte</td>
+		    <td class="tg-pxng" id="diasDeVencimientoDespuesDelCortePublica"></td>
+		    <td class="tg-pxng" id="diasDeVencimientoDespuesDelCorteRexi"></td>
+		    <td class="tg-pxng" id="diasDeVencimientoDespuesDelCorteStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Comisiones</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Tasa de interés anual en pesos</td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnPesosPublica"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnPesosRexi"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Tasa de interés anual en dólares</td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por emisión en pesos</td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnPesosPublica"></td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnPesosRexi"></td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por emisión en dólares</td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="cargoPorEmisionEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Renovación anual en pesos</td>
+		    <td class="tg-pxng" id="renovacionAnualEnPesosPublica"></td>
+		    <td class="tg-pxng" id="renovacionAnualEnPesosRexi"></td>
+		    <td class="tg-pxng" id="renovacionAnualEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Renovación anual en dólares</td>
+		    <td class="tg-pxng" id="renovacionAnualEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="renovacionAnualEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="renovacionAnualEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Segruo de protección en pesos</td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnPesosPublica"></td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnPesosRexi"></td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro de protección en dólares</td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="seguroDeProteccionEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Avance de efectivo</td>
+		    <td class="tg-pxng" id="avanceDeEfectivoPublica"></td>
+		    <td class="tg-pxng" id="avanceDeEfectivoRexi"></td>
+		    <td class="tg-pxng" id="avanceDeEfectivoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por sobregiro</td>
+		    <td class="tg-pxng" id="cargoPorSobregiroPublica"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroRexi"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por sobregiro fijo en pesos</td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnPesosPublica"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnPesosRexi"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por sobregiro fijo en dólares</td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroFijoEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por sobregiro variable en pesos</td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnPesosPublica"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnPesosRexi"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por sobregiro variable en dólares</td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="cargoPorSobregiroVariableEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por mora</td>
+		    <td class="tg-pxng" id="cargoPorMoraPublica"></td>
+		    <td class="tg-pxng" id="cargoPorMoraRexi"></td>
+		    <td class="tg-pxng" id="cargoPorMoraStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por mora fijo en pesos</td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnPesosPublica"></td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnPesosRexi"></td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por mora fijo en dólares</td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="cargoPorMoraFijoEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por mora variable en pesos</td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnPesosPublica"></td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnPesosRexi"></td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnPesosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Cargo por mora variable en dólares</td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnDolaresPublica"></td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnDolaresRexi"></td>
+		    <td class="tg-pxng" id="cargoPorMoraVariableEnDolaresStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Recompensas</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Unidad de recompensa</td>
+		    <td class="tg-pxng" id="unidadDeRecompensaPublica"></td>
+		    <td class="tg-pxng" id="unidadDeRecompensaRexi"></td>
+		    <td class="tg-pxng" id="unidadDeRecompensaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Consumo mínimo para generar unidad</td>
+		    <td class="tg-pxng" id="consumoMinimoParaGenerarUnidadPublica"></td>
+		    <td class="tg-pxng" id="consumoMinimoParaGenerarUnidadRexi"></td>
+		    <td class="tg-pxng" id="consumoMinimoParaGenerarUnidadStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Moneda del consumo mínimo</td>
+		    <td class="tg-pxng" id="monedaDelConsumoMinimoPublica"></td>
+		    <td class="tg-pxng" id="monedaDelConsumoMinimoRexi"></td>
+		    <td class="tg-pxng" id="monedaDelConsumoMinimoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Unidades generadas por consumo mínimo</td>
+		    <td class="tg-pxng" id="unidadesGeneradasPorConsumoMinimoPublica"></td>
+		    <td class="tg-pxng" id="unidadesGeneradasPorConsumoMinimoRexi"></td>
+		    <td class="tg-pxng" id="unidadesGeneradasPorConsumoMinimoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Bono de unidades por emisión</td>
+		    <td class="tg-pxng" id="bonoDeUnidadesPorEmisionPublica"></td>
+		    <td class="tg-pxng" id="bonoDeUnidadesPorEmisionRexi"></td>
+		    <td class="tg-pxng" id="bonoDeUnidadesPorEmisionStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Monto del bono</td>
+		    <td class="tg-pxng" id="montoDelBonoPublica"></td>
+		    <td class="tg-pxng" id="montoDelBonoRexi"></td>
+		    <td class="tg-pxng" id="montoDelBonoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Establecimientos que generan unidades extra</td>
+		    <td class="tg-pxng" id="establecimientosQueGeneranUnidadesExtraPublica"></td>
+		    <td class="tg-pxng" id="establecimientosQueGeneranUnidadesExtraRexi"></td>
+		    <td class="tg-pxng" id="establecimientosQueGeneranUnidadesExtraStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Establecimientos</td>
+		    <td class="tg-pxng" id="establecimientosPublica"></td>
+		    <td class="tg-pxng" id="establecimientosRexi"></td>
+		    <td class="tg-pxng" id="establecimientosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Mínimo de unidades para el canje</td>
+		    <td class="tg-pxng" id="minimoDeUnidadesParaCanjePublica"></td>
+		    <td class="tg-pxng" id="minimoDeUnidadesParaCanjeRexi"></td>
+		    <td class="tg-pxng" id="minimoDeUnidadesParaCanjeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Valor en pesos para el canje mínimo</td>
+		    <td class="tg-pxng" id="valorEnPesosDelCanjeMinimoPublica"></td>
+		    <td class="tg-pxng" id="valorEnPesosDelCanjeMinimoRexi"></td>
+		    <td class="tg-pxng" id="valorEnPesosDelCanjeMinimoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Vencimiento de unidades</td>
+		    <td class="tg-pxng" id="vencimientoDeUnidadesPublica"></td>
+		    <td class="tg-pxng" id="vencimientoDeUnidadesRexi"></td>
+		    <td class="tg-pxng" id="vencimientoDeUnidadesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Meses de vigencia</td>
+		    <td class="tg-pxng" id="mesesDeVigenciaPublica"></td>
+		    <td class="tg-pxng" id="mesesDeVigenciaRexi"></td>
+		    <td class="tg-pxng" id="mesesDeVigenciaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Pago de membresía</td>
+		    <td class="tg-pxng" id="pagoDeMembresiaPublica"></td>
+		    <td class="tg-pxng" id="pagoDeMembresiaRexi"></td>
+		    <td class="tg-pxng" id="pagoDeMembresiaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Descuentos</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Descuentos en comercios específicos</td>
+		    <td class="tg-pxng" id="descuentoEnComerciosEspecificosPublica"></td>
+		    <td class="tg-pxng" id="descuentoEnComerciosEspecificosRexi"></td>
+		    <td class="tg-pxng" id="descuentoEnComerciosEspecificosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Comercios en específico</td>
+		    <td class="tg-pxng" id="comerciosEnEspecificoPublica"></td>
+		    <td class="tg-pxng" id="comerciosEnEspecificoRexi"></td>
+		    <td class="tg-pxng" id="comerciosEnEspecificoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Alcance al descuento</td>
+		    <td class="tg-pxng" id="alcanceDelDescuentoPublica"></td>
+		    <td class="tg-pxng" id="alcanceDelDescuentoRexi"></td>
+		    <td class="tg-pxng" id="alcanceDelDescuentoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Descuento máximo en comercios</td>
+		    <td class="tg-pxng" id="descuentoMaximoEnComerciosPublica"></td>
+		    <td class="tg-pxng" id="descuentoMaximoEnComerciosRexi"></td>
+		    <td class="tg-pxng" id="descuentoMaximoEnComerciosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Descuentos por tipo de comercio</td>
+		    <td class="tg-pxng" id="descuentosPorTipoDeComercioPublica"></td>
+		    <td class="tg-pxng" id="descuentosPorTipoDeComercioRexi"></td>
+		    <td class="tg-pxng" id="descuentosPorTipoDeComercioStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Tipos de comercios</td>
+		    <td class="tg-pxng" id="tiposDeComerciosPublica"></td>
+		    <td class="tg-pxng" id="tiposDeComerciosRexi"></td>
+		    <td class="tg-pxng" id="tiposDeComerciosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Descuento máximo por tipo de comercio</td>
+		    <td class="tg-pxng" id="descuentoMaximoPorTipoDeComercioPublica"></td>
+		    <td class="tg-pxng" id="descuentoMaximoPorTipoDeComercioRexi"></td>
+		    <td class="tg-pxng" id="descuentoMaximoPorTipoDeComercioStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Descuentos ocasionales</td>
+		    <td class="tg-pxng" id="descuentosOcacionalesPublica"></td>
+		    <td class="tg-pxng" id="descuentosOcacionalesRexi"></td>
+		    <td class="tg-pxng" id="descuentosOcacionalesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Catálogo de descuentos ocasionales</td>
+		    <td class="tg-pxng" id="catalogoDeDescuentosOcacionalesPublica"></td>
+		    <td class="tg-pxng" id="catalogoDeDescuentosOcacionalesRexi"></td>
+		    <td class="tg-pxng" id="catalogoDeDescuentosOcacionalesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Historial de crédito mínimo o reducido</td>
+		    <td class="tg-pxng" id="historialDeCreditoMinimoOReducidoPublica"></td>
+		    <td class="tg-pxng" id="historialDeCreditoMinimoOReducidoRexi"></td>
+		    <td class="tg-pxng" id="historialDeCreditoMinimoOReducidoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Primera tarjeta</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Enfoque exclusivo para jóvenes</td>
+		    <td class="tg-pxng" id="enfoqueExclusivoParaJovenesPublica"></td>
+		    <td class="tg-pxng" id="enfoqueExclusivoParaJovenesRexi"></td>
+		    <td class="tg-pxng" id="enfoqueExclusivoParaJovenesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Programa para iniciar el crédito</td>
+		    <td class="tg-pxng" id="programaParaIniciarElCreditoPublica"></td>
+		    <td class="tg-pxng" id="programaParaIniciarElCreditoRexi"></td>
+		    <td class="tg-pxng" id="programaParaIniciarElCreditoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Línea aérea vinculada</td>
+		    <td class="tg-pxng" id="lineaAereaVinculadaPublica"></td>
+		    <td class="tg-pxng" id="lineaAereaVinculadaRexi"></td>
+		    <td class="tg-pxng" id="lineaAereaVinculadaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Acceso a salas VIP en aeropuertos</td>
+		    <td class="tg-pxng" id="accesoASalasVIPEnAeropuertosPublica"></td>
+		    <td class="tg-pxng" id="accesoASalasVIPEnAeropuertosRexi"></td>
+		    <td class="tg-pxng" id="accesoASalasVIPEnAeropuertosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Before boarding</td>
+		    <td class="tg-pxng" id="beforeBoardingPublica"></td>
+		    <td class="tg-pxng" id="beforeBoardingRexi"></td>
+		    <td class="tg-pxng" id="beforeBoardingStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Servicio de asistencia de viajes</td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaDeViajesPublica"></td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaDeViajesRexi"></td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaDeViajesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Servicios de asistencia personal (concierge)</td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaPersonalConciergePublica"></td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaPersonalConciergeRexi"></td>
+		    <td class="tg-pxng" id="serviciosDeAsistenciaPersonalConciergeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro de accidente en viajes</td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnViajesPublica"></td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnViajesRexi"></td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnViajesStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro de accidente en destino de viaje</td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnDestinoDeViajePublica"></td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnDestinoDeViajeRexi"></td>
+		    <td class="tg-pxng" id="seguroDeAccidenteEnDestinoDeViajeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro de autos alquilados</td>
+		    <td class="tg-pxng" id="seguroDeAutosAlquiladosPublica"></td>
+		    <td class="tg-pxng" id="seguroDeAutosAlquiladosRexi"></td>
+		    <td class="tg-pxng" id="seguroDeAutosAlquiladosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro contra demora de equipaje</td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeEquipajePublica"></td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeEquipajeRexi"></td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeEquipajeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro contra pérdida de equipaje</td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeEquipajePublica"></td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeEquipajeRexi"></td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeEquipajeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro contra demora de viaje</td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeViajePublica"></td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeViajeRexi"></td>
+		    <td class="tg-pxng" id="seguroContraDemoraDeViajeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro contra cancelación de viaje</td>
+		    <td class="tg-pxng" id="seguroContraCancelacionDeViajePublica"></td>
+		    <td class="tg-pxng" id="seguroContraCancelacionDeViajeRexi"></td>
+		    <td class="tg-pxng" id="seguroContraCancelacionDeViajeStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Seguro contra pérdida de conexión</td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeConexionPublica"></td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeConexionRexi"></td>
+		    <td class="tg-pxng" id="seguroContraPerdidaDeConexionStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Servicio de emergencia médica internacional</td>
+		    <td class="tg-pxng" id="servicioDeEmergenciaMedicaInternacionalPublica"></td>
+		    <td class="tg-pxng" id="servicioDeEmergenciaMedicaInternacionalRexi"></td>
+		    <td class="tg-pxng" id="servicioDeEmergenciaMedicaInternacionalStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Protección de compras</td>
+		    <td class="tg-pxng" id="proteccionDeComprasPublica"></td>
+		    <td class="tg-pxng" id="proteccionDeComprasRexi"></td>
+		    <td class="tg-pxng" id="proteccionDeComprasStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Protección de precios</td>
+		    <td class="tg-pxng" id="proteccionDePreciosPublica"></td>
+		    <td class="tg-pxng" id="proteccionDePreciosRexi"></td>
+		    <td class="tg-pxng" id="proteccionDePreciosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Adelante de efectivo de emergencia</td>
+		    <td class="tg-pxng" id="adelantoDeEfectivoDeEmergenciaPublica"></td>
+		    <td class="tg-pxng" id="adelantoDeEfectivoDeEmergenciaRexi"></td>
+		    <td class="tg-pxng" id="adelantoDeEfectivoDeEmergenciaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Protección de robo en cajeros</td>
+		    <td class="tg-pxng" id="proteccionRoboEnCajerosPublica"></td>
+		    <td class="tg-pxng" id="proteccionRoboEnCajerosRexi"></td>
+		    <td class="tg-pxng" id="proteccionRoboEnCajerosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Negocios</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Enfoque a empresas y/o PYMEs</td>
+		    <td class="tg-pxng" id="enfoqueEmpresarialYoPYMEsPublica"></td>
+		    <td class="tg-pxng" id="enfoqueEmpresarialYoPYMEsRexi"></td>
+		    <td class="tg-pxng" id="enfoqueEmpresarialYoPYMEsStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Servicio de asistencia a negocios</td>
+		    <td class="tg-pxng" id="servicioDeAsistenciaANegociosPublica"></td>
+		    <td class="tg-pxng" id="servicioDeAsistenciaANegociosRexi"></td>
+		    <td class="tg-pxng" id="servicioDeAsistenciaANegociosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Nombre del servicio</td>
+		    <td class="tg-pxng" id="nombreDelServicioPublica"></td>
+		    <td class="tg-pxng" id="nombreDelServicioRexi"></td>
+		    <td class="tg-pxng" id="nombreDelServicioStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Herramienta para control de gastos</td>
+		    <td class="tg-pxng" id="herramientaParaControlDeGastosPublica"></td>
+		    <td class="tg-pxng" id="herramientaParaControlDeGastosRexi"></td>
+		    <td class="tg-pxng" id="herramientaParaControlDeGastosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Compras a plazos</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Crédito Diferido disponible</td>
+		    <td class="tg-pxng" id="creditoDiferidoDisponiblePublica"></td>
+		    <td class="tg-pxng" id="creditoDiferidoDisponibleRexi"></td>
+		    <td class="tg-pxng" id="creditoDiferidoDisponibleStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Restringido a un establecimiento específico</td>
+		    <td class="tg-pxng" id="restringidoAUnEstablecimientoEspecificoPublica"></td>
+		    <td class="tg-pxng" id="restringidoAUnEstablecimientoEspecificoRexi"></td>
+		    <td class="tg-pxng" id="restringidoAUnEstablecimientoEspecificoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Establecimientos permitidos</td>
+		    <td class="tg-pxng" id="establecimientosPermitidosPublica"></td>
+		    <td class="tg-pxng" id="establecimientosPermitidosRexi"></td>
+		    <td class="tg-pxng" id="establecimientosPermitidosStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Monto mínimo de compra</td>
+		    <td class="tg-pxng" id="montoMinimoDeCompraPublica"></td>
+		    <td class="tg-pxng" id="montoMinimoDeCompraRexi"></td>
+		    <td class="tg-pxng" id="montoMinimoDeCompraStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Mínimo de cuotas permitidas</td>
+		    <td class="tg-pxng" id="minimoDeCuotasPermitidasPublica"></td>
+		    <td class="tg-pxng" id="minimoDeCuotasPermitidasRexi"></td>
+		    <td class="tg-pxng" id="minimoDeCuotasPermitidasStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Máximo de cuotas permitidas</td>
+		    <td class="tg-pxng" id="maximoDeCuotasPermitidasPublica"></td>
+		    <td class="tg-pxng" id="maximoDeCuotasPermitidasRexi"></td>
+		    <td class="tg-pxng" id="maximoDeCuotasPermitidasStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Tasa de interés anual del crédito diferido</td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualDelCreditoDiferidoPublica"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualDelCreditoDiferidoRexi"></td>
+		    <td class="tg-pxng" id="tasaDeInteresAnualDelCreditoDiferidoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Requiere un plástico adicional</td>
+		    <td class="tg-pxng" id="requiereUnPlasticoAdicionalPublica"></td>
+		    <td class="tg-pxng" id="requiereUnPlasticoAdicionalRexi"></td>
+		    <td class="tg-pxng" id="requiereUnPlasticoAdicionalStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Porcentaje disponible sobre el límite principal</td>
+		    <td class="tg-pxng" id="porcentajeDisponibleSobreElLimitePrincipalPublica"></td>
+		    <td class="tg-pxng" id="porcentajeDisponibleSobreElLimitePrincipalRexi"></td>
+		    <td class="tg-pxng" id="porcentajeDisponibleSobreElLimitePrincipalStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Permite avance de efectivo</td>
+		    <td class="tg-pxng" id="permiteAvanceDeEfectivoPublica"></td>
+		    <td class="tg-pxng" id="permiteAvanceDeEfectivoRexi"></td>
+		    <td class="tg-pxng" id="permiteAvanceDeEfectivoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Comisión por avance de efectivo</td>
+		    <td class="tg-pxng" id="comisionPorAvanceDeEfectivoPublica"></td>
+		    <td class="tg-pxng" id="comisionPorAvanceDeEfectivoRexi"></td>
+		    <td class="tg-pxng" id="comisionPorAvanceDeEfectivoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Permite garantía en depósito</td>
+		    <td class="tg-pxng" id="permiteDepositoEnGarantiaPublica"></td>
+		    <td class="tg-pxng" id="permiteDepositoEnGarantiaRexi"></td>
+		    <td class="tg-pxng" id="permiteDepositoEnGarantiaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Recuperación del crédito</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Programa para recuperación del crédito</td>
+		    <td class="tg-pxng" id="programaParaRecuperacionDelCreditoPublica"></td>
+		    <td class="tg-pxng" id="programaParaRecuperacionDelCreditoRexi"></td>
+		    <td class="tg-pxng" id="programaParaRecuperacionDelCreditoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Nombre del programa de recuperación del crédito</td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeRecuperacionDelCreditoPublica"></td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeRecuperacionDelCreditoRexi"></td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeRecuperacionDelCreditoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Programa de educación financiera</td>
+		    <td class="tg-pxng" id="programaDeEducacionFinancieraPublica"></td>
+		    <td class="tg-pxng" id="programaDeEducacionFinancieraRexi"></td>
+		    <td class="tg-pxng" id="programaDeEducacionFinancieraStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Nombre del programa de educación financiera</td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeEducacionFinancieraPublica"></td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeEducacionFinancieraRexi"></td>
+		    <td class="tg-pxng" id="nombreDelProgramaDeEducacionFinancieraStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Afinidad</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Marca compartida con una institución o empresa</td>
+		    <td class="tg-pxng" id="marcaCompartidaConUnaInstitucionOEmpresaPublica"></td>
+		    <td class="tg-pxng" id="marcaCompartidaConUnaInstitucionOEmpresaRexi"></td>
+		    <td class="tg-pxng" id="marcaCompartidaConUnaInstitucionOEmpresaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Nombre de la institución o empresa</td>
+		    <td class="tg-pxng" id="nombreDeLaInstitucionOEmpresaPublica"></td>
+		    <td class="tg-pxng" id="nombreDeLaInstitucionOEmpresaRexi"></td>
+		    <td class="tg-pxng" id="nombreDeLaInstitucionOEmpresaStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Beneficio o valor agregado por afinidad</td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoPorAfinidadPublica"></td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoPorAfinidadRexi"></td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoPorAfinidadStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Beneficio o valor agregado</td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoPublica"></td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoRexi"></td>
+		    <td class="tg-pxng" id="beneficioOValorAgregadoStatus"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-zzm9" colspan="4">Combustible</td>
+		  </tr>
+		  <tr>
+		    <td class="tg-pxng">Destinada exclusivamente a la compra de combustible</td>
+		    <td class="tg-pxng" id="destinadaExclusivamenteALaCompraDeCombustiblesPublica"></td>
+		    <td class="tg-pxng" id="destinadaExclusivamenteALaCompraDeCombustiblesRexi"></td>
+		    <td class="tg-pxng" id="destinadaExclusivamenteALaCompraDeCombustiblesStatus"></td>
+		  </tr>
+		</table>
+		<script type="text/javascript">
+			encontrada = {{encontrada|safe}};
+			rexi = {{rexi|safe}};
+			verification = {{verification|safe}};
+			presentar_Comparacion();
+		</script>
+		<div id="bancos">
+			<a class="banklink" href="/_verificar?banco=popular">Banco Popular</a>
+			<hr><a class="banklink" href="/_verificar?banco=lopezdeharo">Banco López de Haro</a>
+			<hr><a class="banklink" href="/_verificar?banco=progreso">Banco del Progreso</a>
+			<hr><a class="banklink" href="/_verificar?banco=acap">Asociación Cibao</a>
+			<hr><a class="banklink" href="/_verificar?banco=alnap">Asociación La Nacional</a>
+			<hr><a class="banklink" href="/_verificar?banco=bdi">Banco BDI</a>
+			
+	</div>
+	{%elif info == None%}
+	<h1>Tarjeta no encontrada</h1>
+	{%else%}
+		<script type="text/javascript">
+			var info = ordenar({{info|safe}})
+			for (e in info){
+				var div = document.createElement("div");
+				div.innerHTML = info[e].replace(/_/g, " ")
+				document.getElementsByTagName('body')[0].appendChild(div);
+			}
+
+		</script>
+	{%endif%}
+	
+	
+</body>
+</html>

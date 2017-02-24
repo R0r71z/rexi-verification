@@ -1,0 +1,48 @@
+
+#tablaHTML {
+  margin-top:25px;
+}
+
+#header {
+	width:100%;
+	height: auto;
+	background-color:#ffffff;
+	margin:0 0 30px 0;
+    padding: 5px 0 0 0 ;
+}
+.tabs {
+	margin:1px;
+	color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(66, 184, 221);
+}
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#bbb;z-index:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#bbb;color:#594F4F;background-color:#E0FFEB;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#bbb;color:#493F3F;background-color:#9DE0AD;}
+.tg .tg-okog{font-family:"Arial Black", Gadget, sans-serif !important;;background-color:#c0c0c0;color:#000000;vertical-align:left}
+.tg .tg-pxng{background-color:#ffffff;color:#000000;vertical-align:left}
+.tg .tg-zzm9{font-weight:bold;font-size:20px;font-family:"Times New Roman", Times, serif !important;;vertical-align:left}
+
+#bancos {
+	border:solid 1px;
+	position:fixed;
+	right:1px;
+	top:100px;
+	width:5%;
+	height:auto;
+	text-align:left;
+}
+
+.banklink {
+	text-decoration: none;
+	font-size: 3ex;
+	font-weight: bold;
+	color:black;
+
+}
+
+.banklink:hover {
+	cursor: alias;
+
+}
