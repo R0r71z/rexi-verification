@@ -12,7 +12,7 @@ import json
 from google.appengine.api import urlfetch
 import logging
 
-urlfetch.set_default_fetch_deadline(60)
+urlfetch.set_default_fetch_deadline(45)
 tarjetas = {'ademiclasica': 1791, 'vimencablackgold': 6024, 'scotiabankgold': [1775, 1776], 'scotiabankaadvantageplatinum': 1782, 'popularalmacenesiberia': 1696, 'bancamericaclasica': 2017, 'popularplatinumlocal': [1691, 1690], 'banaciplatinum': 16, 'progresointernacional': [1756, 1753], 'bhdleonmipais': 1736, 'alnapgold': 1678, 'popularmileageplus': 1704, 'scotiabankvisa': 1774, 'popularccnplus': 1703, 'apapclasicainternacional': 1766, 'bdianthonysplatinum': 1871, 'bdisignature': 38, 'bhdleongoldpremia': 1929, 'scotiabankinfinite': 1783, 'progresoamericanexpress': 1748, 'banreservasmultimoneda': [1710, 1711], 'progresoplatinum': 1760, 'ademigoldinternacional': 1793, 'caribeplatinum': 1847, 'bhdleonclasicalocal': 1725, 'federalplatinum': 1851, 'apapstandardinternacional': 1762, 'banreservasplatinumuniverse': 1718, 'bdiplatinum': 2075, 'alnapconfiaentilocal': 4153, 'alnapconfiaentiinternacional': 4228, 'vimencaplatinum': 1814, 'bhdleonsiremasoro': 1743, 'popularplatinuminternacional': [1922, 1923], 'banreservasclasica': 1712, 'banescoclasicainternacional': 1806, 'promericalamaplazos': 1820, 'bancamericasignature': 2021, 'apapgold': 1767, 'bhdleonblackmujer': 1735, 'apapfamiliar': 1769, 'lopezdeharoclasica': 1829, 'ademiempresarialinternacional': 92, 'promericagold': 1828, 'bancamericaplatinum': 2019, 'scotiabankorange': 1785, 'bancamericagold': 2018, 'scotiabankaadvantage': 1779, 'caribeecard': 1932, 'bhdleonclasicainternacional': 1727, 'vimencaclasicalocal': 1812, 'bhdleoninfinite': 1732, 'popularmbsignaturecard': 1695, 'acapvisaclasicalocal': 1770, 'banescoplatinum': [2087, 1807], 'bhdleongold': [1730, 1729], 'bhdleongoldmlb': 1738, 'banacistandar': 116, 'acapvisagold': 1772, 'popularfcbescola': 1694, 'populargoldinternacional': [1920, 1921], 'vimencagold': 1813, 'bhdleonbeisbolinvernal': 1737, 'banescogold': 1809, 'banreservasgoldmultimoneda': 1716, 'banacigold': 130, 'banaciempresarial': 132, 'bhdleonplatinummujer': 1734, 'ademiclasicainternacional': 1792, 'lopezdeharoclubnaco': 1833, 'lopezdeharoclubhemingway': 1834, 'popularcaminantesporlavida': 1699, 'bdisignaturebmcargo': 144, 'popularsegurosuniversal': 1702, 'banescostandard': 2083, 'bdilocal': 1855, 'bhdleonclasicapremia': 1928, 'bdicrediplan': 152, 'santacruzclasica': 1786, 'alnapunaselocal': 1680, 'alnapclasicalocal': 1676, 'banreservasplatinum': 1717, 'promericaplatinum': 1826, 'popularclasicainternacional': [1918, 1919], 'caribeclasicainternacional': 1842, 'popularsuperpolasirena': 1700, 'lopezdeharogoldsgym': 1835, 'promericaspiritgold': 1816, 'alnapunionlocal': 1682, 'scotiabankmastercard': 1773, 'ademiempresarialplus': 1797, 'ademihipermercadosole': 1794, 'alnapcompramas': 4247, 'apapplatinum': [1764, 1768], 'alnapunioninternacional': 1683, 'banacicombustible': 80, 'bdianthonysclasica': 1869, 'banreservasstandard': 1713, 'scotiabankaadvantagegold': [1780, 1781], 'alnapclasicainternacional': 1677, 'ademiempresariallocal': 1796, 'acapvisaclasicainternacional': 1771, 'bhdleonstandardlocal': 1726, 'scotiabankplatinum': [1777, 1778], 'progresoamericanexpresssumaccn': 1930, 'apapgoldinternacional': 1763, 'popularblackinternacional': 1924, 'santacruzcecomsa': 1790, 'bdianthonysgold': 1870, 'bhdleongoldmujer': 1733, 'alnapunaseinternacional': 1681, 'federalgold': 1850, 'banescooro': 2088, 'lopezdeharoplatinum': 1831, 'bdiclasica': 1856, 'scotiabankpricesmartdiamond': 1931, 'federalclasica': 1849, 'bdigold': 1857, 'popularprestige': 1689, 'promericaspiritplatinum': 1815, 'lopezdeharogold': 1830, 'lopezdeharocasadeespana': 1832, 'popularikeafamily': 1698, 'caribeelite': 1846, 'banescoinfinite': 1808, 'popularclasicalocal': [1684, 1685], 'progresogold': [1757, 1754], 'progresolocal': [1755, 1752], 'banreservasinfinite': 1719, 'santacruzplatinum': 1788, 'vimencaclasicainternacional': 6023, 'scotiabankbravo': 1784, 'promericaplatinumpremium': 1821, 'caribeclasicalocal': 1840, 'bhdleonstandardinternacional': 1728, 'apapstandardlocal': 1761, 'santacruzinfinite': 1789, 'alnapconfiamaslocal': 1679, 'popularblacklocal': 1692, 'santacruzgold': 1787, 'popularorbit': 1688, 'bhdleonlacadena': 1742, 'promericainfinite': 1824, 'progresotheplatinumcard': 1750, 'vimencagoldpagatodo': 137, 'promericamisuper': 1817, 'progresoamericanexpresscasadecampoplatinum': 1751, 'banaciblack': 140, 'caribeoro': 1848, 'popularjetblue': 1705, 'apapclasicalocal': 1765, 'progresoamericanexpressgold': 1749, 'bhdleonplatinum': 1731, 'banreservasgold': [1714, 1715], 'populargoldlocal': [1686, 1687]}
 
 
@@ -137,8 +137,8 @@ def Compara_tarjetas(info,info2,update):
                 emision_en_pesos = sacar_entero(dos_valores[0])
                 emision_en_dolares = sacar_entero(dos_valores[1])
             elif "usd" in dos_valores[0] and "rd$" in dos_valores[1]:
-                emision_en_dolares = dos_valores[0]
-                emision_en_pesos = dos_valores[1]
+                emision_en_dolares = sacar_entero(dos_valores[0])
+                emision_en_pesos = sacar_entero(dos_valores[1])
             el_real["cargoPorEmisionEnPesos"] = emision_en_pesos
             el_real["cargoPorEmisionEnDolares"] = emision_en_dolares
 
@@ -225,7 +225,7 @@ def Compara_tarjetas(info,info2,update):
     #CARGO POR SOBREGIRO
         if "rd$" in el_ayudante["cargo_por_sobregiro"] and "usd" in el_ayudante["cargo_por_sobregiro"]:
             dos_valores = []
-            splitters = ["/","-","o","+"]
+            splitters = ["/","-","o","+", "y"]
             for e in splitters:
                 if el_ayudante["cargo_por_sobregiro"].count(e) > 0:
                     dos_valores = el_ayudante["cargo_por_sobregiro"].split(e)
@@ -259,6 +259,16 @@ def Compara_tarjetas(info,info2,update):
                 el_real["cargoPorSobregiroFijoEnPesos"] = 0
                 el_real["cargoPorSobregiroFijoEnDolares"] = 0
 
+        elif "%" in el_ayudante["cargo_por_sobregiro"] and "rd$" not in el_ayudante["cargo_por_sobregiro"] and "usd" not in el_ayudante["cargo_por_sobregiro"]:
+            sobregiro_en_pesos = el_ayudante["cargo_por_sobregiro"]
+            if el_real["cargoPorSobregiro"] != "Variable":
+                el_real["cargoPorSobregiroFijoEnPesos"] = sacar_entero(sobregiro_en_pesos)
+                el_real["cargoPorSobregiroFijoEnDolares"] = 0
+            else:
+                el_real["cargoPorSobregiroVariableEnPesos"] = convertir_float(sobregiro_en_pesos)
+                el_real["cargoPorSobregiroVariableEnDolares"] = 0
+                el_real["cargoPorSobregiroFijoEnPesos"] = 0
+                el_real["cargoPorSobregiroFijoEnDolares"] = 0
 
         elif "usd" in el_ayudante["cargo_por_sobregiro"]:
             sobregiro_en_dolares = el_ayudante["cargo_por_sobregiro"]
@@ -275,10 +285,11 @@ def Compara_tarjetas(info,info2,update):
             el_real["cargoPorSobregiroVariableEnDolares"] = ""
             el_real["cargoPorSobregiroFijoEnPesos"] = ""
             el_real["cargoPorSobregiroFijoEnDolares"] = ""
+
     #CARGO POR MORA
         if "rd$" in el_ayudante["cargo_por_mora"] and "usd" in el_ayudante["cargo_por_mora"]:
             dos_valores = []
-            splitters = ["/","-","o","+"]
+            splitters = ["/","-","o","+", "y"]
             for e in splitters:
                 if el_ayudante["cargo_por_mora"].count(e) > 0:
                     dos_valores = el_ayudante["cargo_por_mora"].split(e)
@@ -330,8 +341,17 @@ def Compara_tarjetas(info,info2,update):
             el_real["cargoPorMoraFijoEnDolares"] = ""
 
         avance_efectivo = el_ayudante["avance_de_efectivo"]
+        dos_valores = []
         if avance_efectivo != "n/a":
-            el_real["avanceDeEfectivo"] = convertir_float(avance_efectivo)
+            splitters = ["/","-","o","+"]
+            for e in splitters:
+                if avance_efectivo.count(e) > 0:
+                    dos_valores = avance_efectivo.split(e)
+                    break
+            if dos_valores == []:
+                el_real["avanceDeEfectivo"] = convertir_float(avance_efectivo)
+            else:
+                el_real["avanceDeEfectivo"] = convertir_float(dos_valores[0])
         else:
             el_real["avanceDeEfectivo"] = ""
 
@@ -339,7 +359,7 @@ def Compara_tarjetas(info,info2,update):
 
     #Recompensas
         if el_ayudante["plan_de_lealtad"] != "no encontrado":
-            lealtad_rexi = info["unidadDeRecompensa"].lower()
+            lealtad_rexi = info["unidadDeRecompensa"].lower() if info["unidadDeRecompensa"] != None else ""
             lealtad_publica = el_ayudante["plan_de_lealtad"].lower()
 
             if (lealtad_rexi in lealtad_publica) or (lealtad_publica in lealtad_rexi) or (lealtad_rexi == lealtad_publica):
@@ -383,10 +403,11 @@ def Compara_tarjetas(info,info2,update):
             el_real["descuentoMaximoEnComercios"] = 0
             el_real["alcanceDelDescuento"] = ""
 
+
         tipo_comercio = el_ayudante["descuentos_por_tipo_de_comercio"] 
 
-        el_real["descuentosPorTipoDeComercio"] = False if tipo_comercio == "n/a" else True
-        el_real["tiposDeComercio"] = "No" if el_real["descuentosPorTipoDeComercio"] == False else info["tiposDeComercio"]
+        el_real["descuentosPorTipoDeComercio"] = True if descuento_maximo != "no encontrado" and el_real["descuentoEnComerciosEspecificos"] == False else False
+        el_real["tiposDeComercios"] = "No" if el_real["descuentosPorTipoDeComercio"] == False else info["tiposDeComercios"]
         el_real["descuentoMaximoPorTipoDeComercio"] = 0 if el_real["descuentosPorTipoDeComercio"] == False else info["descuentoMaximoPorTipoDeComercio"]
 
         el_real["historialDeCreditoMinimoOReducido"] = ""
@@ -517,8 +538,8 @@ def BuscarInformacion(clave,donde):
         informacion = informacion.split(",")
         for e in informacion:
             if (("tasa" in e or "cargo" in e) and "financiamiento" in e) or (("tasa" in e or "cargo" in e) and "interes" in e) or ("interes" in e and "financiamiento" in e):
-                if "rd$" in e or "usd$" in e:
-                    if "rd$" in e:
+                if "rd" in e or "usd" in e:
+                    if "rd" in e:
                         informacion = e
                         break
                 else:
@@ -536,7 +557,7 @@ def BuscarInformacion(clave,donde):
             if type(informacion) != list:
                 informacion = informacion_old
             else:
-                informacion = informacion[1] if "rd$" in informacion[1] else informacion[0]
+                informacion = informacion[1] if "rd" in informacion[1] else informacion[0]
         else:
             informacion = "n/a"
 
@@ -545,8 +566,8 @@ def BuscarInformacion(clave,donde):
         informacion = informacion.split(",")
         for e in informacion:
             if (("tasa" in e or "cargo" in e) and "financiamiento" in e) or (("tasa" in e or "cargo" in e) and "interes" in e) or ("interes" in e and "financiamiento" in e):
-                if "rd$" in e or "usd$" in e:
-                    if "usd$" in e:
+                if "rd" in e or "usd" in e:
+                    if "usd" in e:
                         informacion = e
                         break
                 else:
@@ -563,7 +584,7 @@ def BuscarInformacion(clave,donde):
             if type(informacion) != list:
                 informacion = informacion_old
             else:
-                informacion = informacion[1] if "usd$" in informacion[1] else informacion[0]
+                informacion = informacion[1] if "usd" in informacion[1] else informacion[0]
         else:
             informacion = "usd$0"
         
@@ -585,12 +606,13 @@ def BuscarInformacion(clave,donde):
                 informacion = "n/a"
             else:
                 for e in informacion2:
-                    if "principal" in e and u"emisión" in e and ("grat" in e or "cost" in e) and not u"primer año" in e:
+                    if "adicional" not in e and u"emisión" in e and ("grat" in e or "cost" in e) and not u"primer año" in e:
                         benefit = True
                         break
                 informacion = informacion[informacion.find("|")+1:]
-                if informacion == "gratis" or benefit == True:
+                if "gratis" in informacion or benefit == True:
                     informacion = "rd$0"
+
         if "emision_internacional" in donde:
             internacional = donde[donde.find("emision_internacional")+len("emision_internacional")+1:donde.find(",", donde.find("emision_internacional"))]
             if "/" in internacional:
@@ -1406,8 +1428,8 @@ def rexi_info(id_tarjeta,update):
 
 class Principal(Handler):
     def get(self):
-        content = "test"
-        self.render("rexi.html", test=content)
+        self.render("rexi.html")
+
 def chequea_banco(lixt,update):
     lixta = []
     for e in lixt:
@@ -1546,7 +1568,10 @@ class MainHandler(Handler):
                     pass
                 else:
                     guardarTarjeta(card,check=False)
-                    info = maniobrarComoPro(memcache.get(card).contenido)
+                    informacion = memcache.get(card)
+                    if informacion != None:
+                        info = maniobrarComoPro(informacion.contenido)
+
             elif update == True:
                 informacion = memcache.get(card)
                 memcache.delete(card)
