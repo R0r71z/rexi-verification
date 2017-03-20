@@ -13,7 +13,7 @@ from google.appengine.api import urlfetch
 import logging
 
 urlfetch.set_default_fetch_deadline(45)
-tarjetas = {'ademiclasica': 1791, 'vimencablackgold': 6024, 'scotiabankgold': [1775, 1776], 'scotiabankaadvantageplatinum': 1782, 'popularalmacenesiberia': 1696, 'bancamericaclasica': 2017, 'popularplatinumlocal': [1691, 1690], 'banaciplatinum': 16, 'progresointernacional': [1756, 1753], 'bhdleonmipais': 1736, 'alnapgold': 1678, 'popularmileageplus': 1704, 'scotiabankvisa': 1774, 'popularccnplus': 1703, 'apapclasicainternacional': 1766, 'bdianthonysplatinum': 1871, 'bdisignature': 38, 'bhdleongoldpremia': 1929, 'scotiabankinfinite': 1783, 'progresoamericanexpress': 1748, 'banreservasmultimoneda': [1710, 1711], 'progresoplatinum': 1760, 'ademigoldinternacional': 1793, 'caribeplatinum': 1847, 'bhdleonclasicalocal': 1725, 'federalplatinum': 1851, 'apapstandardinternacional': 1762, 'banreservasplatinumuniverse': 1718, 'bdiplatinum': 2075, 'alnapconfiaentilocal': 4153, 'alnapconfiaentiinternacional': 4228, 'vimencaplatinum': 1814, 'bhdleonsiremasoro': 1743, 'popularplatinuminternacional': [1922, 1923], 'banreservasclasica': 1712, 'banescoclasicainternacional': 1806, 'promericalamaplazos': 1820, 'bancamericasignature': 2021, 'apapgold': 1767, 'bhdleonblackmujer': 1735, 'apapfamiliar': 1769, 'lopezdeharoclasica': 1829, 'ademiempresarialinternacional': 92, 'promericagold': 1828, 'bancamericaplatinum': 2019, 'scotiabankorange': 1785, 'bancamericagold': 2018, 'scotiabankaadvantage': 1779, 'caribeecard': 1932, 'bhdleonclasicainternacional': 1727, 'vimencaclasicalocal': 1812, 'bhdleoninfinite': 1732, 'popularmbsignaturecard': 1695, 'acapvisaclasicalocal': 1770, 'banescoplatinum': [2087, 1807], 'bhdleongold': [1730, 1729], 'bhdleongoldmlb': 1738, 'banacistandar': 116, 'acapvisagold': 1772, 'popularfcbescola': 1694, 'populargoldinternacional': [1920, 1921], 'vimencagold': 1813, 'bhdleonbeisbolinvernal': 1737, 'banescogold': 1809, 'banreservasgoldmultimoneda': 1716, 'banacigold': 130, 'banaciempresarial': 132, 'bhdleonplatinummujer': 1734, 'ademiclasicainternacional': 1792, 'lopezdeharoclubnaco': 1833, 'lopezdeharoclubhemingway': 1834, 'popularcaminantesporlavida': 1699, 'bdisignaturebmcargo': 144, 'popularsegurosuniversal': 1702, 'banescostandard': 2083, 'bdilocal': 1855, 'bhdleonclasicapremia': 1928, 'bdicrediplan': 152, 'santacruzclasica': 1786, 'alnapunaselocal': 1680, 'alnapclasicalocal': 1676, 'banreservasplatinum': 1717, 'promericaplatinum': 1826, 'popularclasicainternacional': [1918, 1919], 'caribeclasicainternacional': 1842, 'popularsuperpolasirena': 1700, 'lopezdeharogoldsgym': 1835, 'promericaspiritgold': 1816, 'alnapunionlocal': 1682, 'scotiabankmastercard': 1773, 'ademiempresarialplus': 1797, 'ademihipermercadosole': 1794, 'alnapcompramas': 4247, 'apapplatinum': [1764, 1768], 'alnapunioninternacional': 1683, 'banacicombustible': 80, 'bdianthonysclasica': 1869, 'banreservasstandard': 1713, 'scotiabankaadvantagegold': [1780, 1781], 'alnapclasicainternacional': 1677, 'ademiempresariallocal': 1796, 'acapvisaclasicainternacional': 1771, 'bhdleonstandardlocal': 1726, 'scotiabankplatinum': [1777, 1778], 'progresoamericanexpresssumaccn': 1930, 'apapgoldinternacional': 1763, 'popularblackinternacional': 1924, 'santacruzcecomsa': 1790, 'bdianthonysgold': 1870, 'bhdleongoldmujer': 1733, 'alnapunaseinternacional': 1681, 'federalgold': 1850, 'banescooro': 2088, 'lopezdeharoplatinum': 1831, 'bdiclasica': 1856, 'scotiabankpricesmartdiamond': 1931, 'federalclasica': 1849, 'bdigold': 1857, 'popularprestige': 1689, 'promericaspiritplatinum': 1815, 'lopezdeharogold': 1830, 'lopezdeharocasadeespana': 1832, 'popularikeafamily': 1698, 'caribeelite': 1846, 'banescoinfinite': 1808, 'popularclasicalocal': [1684, 1685], 'progresogold': [1757, 1754], 'progresolocal': [1755, 1752], 'banreservasinfinite': 1719, 'santacruzplatinum': 1788, 'vimencaclasicainternacional': 6023, 'scotiabankbravo': 1784, 'promericaplatinumpremium': 1821, 'caribeclasicalocal': 1840, 'bhdleonstandardinternacional': 1728, 'apapstandardlocal': 1761, 'santacruzinfinite': 1789, 'alnapconfiamaslocal': 1679, 'popularblacklocal': 1692, 'santacruzgold': 1787, 'popularorbit': 1688, 'bhdleonlacadena': 1742, 'promericainfinite': 1824, 'progresotheplatinumcard': 1750, 'vimencagoldpagatodo': 137, 'promericamisuper': 1817, 'progresoamericanexpresscasadecampoplatinum': 1751, 'banaciblack': 140, 'caribeoro': 1848, 'popularjetblue': 1705, 'apapclasicalocal': 1765, 'progresoamericanexpressgold': 1749, 'bhdleonplatinum': 1731, 'banreservasgold': [1714, 1715], 'populargoldlocal': [1686, 1687]}
+tarjetas = {'bdiplazacentralgold':1862,'bdiplazacentralclasica':1861,'bdiplazacentrallocal':1860,'bdibmcargogold':1864,'bdibmcargolocal':2085,'bdifundapec':1867,'bdibmcargoclasica':2084,'ademiclasica': 1791, 'vimencablackgold': 6024, 'scotiabankgold': [1775, 1776], 'scotiabankaadvantageplatinum': 1782, 'popularalmacenesiberia': 1696, 'bancamericaclasica': 2017, 'popularplatinumlocal': [1691, 1690], 'banaciplatinum': 16, 'progresointernacional': [1756, 1753], 'bhdleonmipais': 1736, 'alnapgold': 1678, 'popularmileageplus': 1704, 'scotiabankvisa': 1774, 'popularccnplus': 1703, 'apapclasicainternacional': 1766, 'bdianthonysplatinum': 1871, 'bdisignature': 38, 'bhdleongoldpremia': 1929, 'scotiabankinfinite': 1783, 'progresoamericanexpress': 1748, 'banreservasmultimoneda': [1710, 1711], 'progresoplatinum': 1760, 'ademigoldinternacional': 1793, 'caribeplatinum': 1847, 'bhdleonclasicalocal': 1725, 'federalplatinum': 1851, 'apapstandardinternacional': 1762, 'banreservasplatinumuniverse': 1718, 'bdiplatinum': 2075, 'alnapconfiaentilocal': 4153, 'alnapconfiaentiinternacional': 4228, 'vimencaplatinum': 1814, 'bhdleonsiremasoro': 1743, 'popularplatinuminternacional': [1922, 1923], 'banreservasclasica': 1712, 'banescoclasicainternacional': 1806, 'promericalamaplazos': 1820, 'bancamericasignature': 2021, 'apapgold': 1767, 'bhdleonblackmujer': 1735, 'apapfamiliar': 1769, 'lopezdeharoclasica': 1829, 'ademiempresarialinternacional': 92, 'promericagold': 1828, 'bancamericaplatinum': 2019, 'scotiabankorange': 1785, 'bancamericagold': 2018, 'scotiabankaadvantage': 1779, 'caribeecard': 1932, 'bhdleonclasicainternacional': 1727, 'vimencaclasicalocal': 1812, 'bhdleoninfinite': 1732, 'popularmbsignaturecard': 1695, 'acapvisaclasicalocal': 1770, 'banescoplatinum': [2087, 1807], 'bhdleongold': [1730, 1729], 'bhdleongoldmlb': 1738, 'banacistandar': 116, 'acapvisagold': 1772, 'popularfcbescola': 1694, 'populargoldinternacional': [1920, 1921], 'vimencagold': 1813, 'bhdleonbeisbolinvernal': 1737, 'banescogold': 1809, 'banreservasgoldmultimoneda': 1716, 'banacigold': 130, 'banaciempresarial': 132, 'bhdleonplatinummujer': 1734, 'ademiclasicainternacional': 1792, 'lopezdeharoclubnaco': 1833, 'lopezdeharoclubhemingway': 1834, 'popularcaminantesporlavida': 1699, 'bdisignaturebmcargo': 144, 'popularsegurosuniversal': 1702, 'banescostandard': 2083, 'bdilocal': 1855, 'bhdleonclasicapremia': 1928, 'bdicrediplan': 152, 'santacruzclasica': 1786, 'alnapunaselocal': 1680, 'alnapclasicalocal': 1676, 'banreservasplatinum': 1717, 'promericaplatinum': 1826, 'popularclasicainternacional': [1918, 1919], 'caribeclasicainternacional': 1842, 'popularsuperpolasirena': 1700, 'lopezdeharogoldsgym': 1835, 'promericaspiritgold': 1816, 'alnapunionlocal': 1682, 'scotiabankmastercard': 1773, 'ademiempresarialplus': 1797, 'ademihipermercadosole': 1794, 'alnapcompramas': 4247, 'apapplatinum': [1764, 1768], 'alnapunioninternacional': 1683, 'banacicombustible': 80, 'bdianthonysclasica': 1869, 'banreservasstandard': 1713, 'scotiabankaadvantagegold': [1780, 1781], 'alnapclasicainternacional': 1677, 'ademiempresariallocal': 1796, 'acapvisaclasicainternacional': 1771, 'bhdleonstandardlocal': 1726, 'scotiabankplatinum': [1777, 1778], 'progresoamericanexpresssumaccn': 1930, 'apapgoldinternacional': 1763, 'popularblackinternacional': 1924, 'santacruzcecomsa': 1790, 'bdianthonysgold': 1870, 'bhdleongoldmujer': 1733, 'alnapunaseinternacional': 1681, 'federalgold': 1850, 'banescooro': 2088, 'lopezdeharoplatinum': 1831, 'bdiclasica': 1856, 'scotiabankpricesmartdiamond': 1931, 'federalclasica': 1849, 'bdigold': 1857, 'popularprestige': 1689, 'promericaspiritplatinum': 1815, 'lopezdeharogold': 1830, 'lopezdeharocasadeespana': 1832, 'popularikeafamily': 1698, 'caribeelite': 1846, 'banescoinfinite': 1808, 'popularclasicalocal': [1684, 1685], 'progresogold': [1757, 1754], 'progresolocal': [1755, 1752], 'banreservasinfinite': 1719, 'santacruzplatinum': 1788, 'vimencaclasicainternacional': 6023, 'scotiabankbravo': 1784, 'promericaplatinumpremium': 1821, 'caribeclasicalocal': 1840, 'bhdleonstandardinternacional': 1728, 'apapstandardlocal': 1761, 'santacruzinfinite': 1789, 'alnapconfiamaslocal': 1679, 'popularblacklocal': 1692, 'santacruzgold': 1787, 'popularorbit': 1688, 'bhdleonlacadena': 1742, 'promericainfinite': 1824, 'progresotheplatinumcard': 1750, 'vimencagoldpagatodo': 137, 'promericamisuper': 1817, 'progresoamericanexpresscasadecampoplatinum': 1751, 'banaciblack': 140, 'caribeoro': 1848, 'popularjetblue': 1705, 'apapclasicalocal': 1765, 'progresoamericanexpressgold': 1749, 'bhdleonplatinum': 1731, 'banreservasgold': [1714, 1715], 'populargoldlocal': [1686, 1687]}
 
 
 template_dir = os.path.join(os.path.dirname(__file__),'templates')
@@ -32,6 +32,11 @@ class Handler(webapp2.RequestHandler):
 class InformacionTarjetas(db.Model):
     nombre = db.StringProperty(required=True)
     contenido = db.TextProperty(required=True)
+
+class Tarjeta_ID(db.Model):
+    nombre_tarjeta = db.StringProperty(required=True)
+    numeros_tarjeta = db.ListProperty(item_type=int,required=True)
+
 
 def fetch(info):
     info = info[info.find("<div id='contenido'>")+len("<div id='contenido'>"):info.find("</div>", info.find("<div id='contenido'>")+1)]
@@ -1433,7 +1438,12 @@ class Principal(Handler):
 def chequea_banco(lixt,update):
     lixta = []
     for e in lixt:
-        info = json.loads(rexi_info(tarjetas[e],update))
+        tarjeta = db.GqlQuery("select * from Tarjeta_ID where nombre_tarjeta='%s'" %e).fetch(1)[0]
+        logging.error(tarjeta)
+        if tarjeta.numeros_tarjeta[1] == 0:
+            info = json.loads(rexi_info(tarjeta.numeros_tarjeta[0],update))
+        else:
+            info = json.loads(rexi_info(tarjeta.numeros_tarjeta,update))
         if "status" not in info:
             lixta.append(e)
     return len(lixta)
@@ -1444,6 +1454,7 @@ class VerificadorHandler(Handler):
             id_tarjeta = self.request.get_all("id")
             update = True if self.request.get("update") == "1" else False
             error = False
+            tarjetas = db.GqlQuery("select * from Tarjeta_ID").fetch(500)
             for idt in id_tarjeta:
                 if idt.isdigit() == False:
                     error = True
@@ -1451,29 +1462,21 @@ class VerificadorHandler(Handler):
                 info = json.loads(rexi_info(idt,update))
                 info2 = None
                 for e in tarjetas:
-                    if type(tarjetas[e]) == list:
-                        for num in tarjetas[e]:
-                            if num == int(idt):
-                                info2 = memcache.get(e)
-                                if info2 == None or update == True:
-                                    guardarTarjeta(e,check=False)
-                                    time.sleep(1)
-                                    info2 = memcache.get(e)
-                                break
-                    else:
-                        if tarjetas[e] == int(idt):
-                            info2 = memcache.get(e)
-                            if info2 == None or update == True:
-                                guardarTarjeta(e,check=False)
-                                time.sleep(1)
-                                info2 = memcache.get(e)
-                            break
+                    if e.numeros_tarjeta[1] == int(idt) or e.numeros_tarjeta[0] == int(idt):
+                        info2 = memcache.get(e.nombre_tarjeta)
+                        if info2 == None or update == True:
+                            guardarTarjeta(e.nombre_tarjeta,check=False)
+                            time.sleep(1)
+                            info2 = memcache.get(e.nombre_tarjeta)
+                        break
+
                 if info2 != None:
                     info2_viejo = info2
-                    info2 = memcache.get("local_"+str(id_tarjeta))
+                    info2 = memcache.get("local_"+str(idt))
                     if info2 == None or update == True:
-                        memcache.set("local_"+str(id_tarjeta),json.loads(maniobrarComoPro(info2_viejo.contenido)))
-                        info2 = memcache.get("local_"+str(id_tarjeta))
+                        memcache.set("local_"+str(idt),json.loads(maniobrarComoPro(info2_viejo.contenido)))
+                        info2 = memcache.get("local_"+str(idt))
+
                     if len(info) != 2:
                         info = json.loads(info)
                         encontrada.append(json.dumps(Compara_tarjetas(info,info2,update)[1]))
@@ -1493,57 +1496,47 @@ class VerificadorHandler(Handler):
             error = False
             id_tarjeta = []
             encontrada,rexi,verification=[],[],[]
+            tarjetas = db.GqlQuery("select * from Tarjeta_ID").fetch(500)
             update = True if self.request.get("update") == "1" else False
             for e in tarjetas:
-                if banco in e:
-                    credit_cards.append(e)
+                if banco in e.nombre_tarjeta:
+                    credit_cards.append(e.nombre_tarjeta)
             if credit_cards == []:
                 self.write("<h1>Este banco no existe</h1>")
             elif chequea_banco(credit_cards,update) == 0:
                 self.write("<h1>Este banco no tiene tarjetas publicadas</h1>")
             else:
                 for nombre in credit_cards:
-                    if type(tarjetas[nombre]) == list:
-                        for e in tarjetas[nombre]:
-                            id_tarjeta.append(e)
-                    else:
-                        id_tarjeta.append(tarjetas[nombre])
+                    for e in tarjetas:
+                        if e.nombre_tarjeta == nombre:
+                            id_tarjeta.append(e.numeros_tarjeta[0])
+                            id_tarjeta.append(e.numeros_tarjeta[1])
                 
                 for idt in id_tarjeta:
 
                     info = json.loads(rexi_info(idt,update))
                     info2 = None
                     for e in tarjetas:
-                        if type(tarjetas[e]) == list:
-                            for num in tarjetas[e]:
-                                if num == int(idt):
-                                    info2 = memcache.get(e)
-                                    if info2 == None or update == True:
-                                        guardarTarjeta(e,check=False)
-                                        time.sleep(1)
-                                        info2 = memcache.get(e)
-                                    break
-                        else:
-                            if tarjetas[e] == int(idt):
-                                info2 = memcache.get(e)
-                                if info2 == None or update == True:
-                                    guardarTarjeta(e,check=False)
-                                    time.sleep(1)
-                                    info2 = memcache.get(e)
-                                break
+                        if e.numeros_tarjeta[1] == int(idt) or e.numeros_tarjeta[0] == int(idt):
+                            info2 = memcache.get(e.nombre_tarjeta)
+                            if info2 == None or update == True:
+                                guardarTarjeta(e.nombre_tarjeta,check=False)
+                                time.sleep(1)
+                                info2 = memcache.get(e.nombre_tarjeta)
+                            break
+
                     if info2 != None:
                         info2_viejo = info2
                         info2 = memcache.get("local_"+str(idt))
                         if info2 == None or update == True:
                             memcache.set("local_"+str(idt),json.loads(maniobrarComoPro(info2_viejo.contenido)))
                             info2 = memcache.get("local_"+str(idt))
+                            
                         if "id" in info:
- 
                             info = json.loads(info)
                             encontrada.append(json.dumps(Compara_tarjetas(info,info2,update)[1]))
                             rexi.append(json.dumps(Compara_tarjetas(info,info2,update)[0]))
                             verification.append(json.dumps(Compara_tarjetas(info,info2,update)[2]))
-
 
                     else:
                         error = True
@@ -1589,22 +1582,61 @@ class MainHandler(Handler):
 
         if not self.request.get("test"):
             time.sleep(1)
-            verification = tarjetas.get(card)
+            verification = tarjetas = db.GqlQuery("select * from Tarjeta_ID where nombre_tarjeta='"+card+"'").fetch(1)
             update_request = "&update=1" if update == True else ""
-            if verification != None:
-                if type(verification) == list:
-                    ids = "id="+str(verification[0])+"&id="+str(verification[1])
+            if verification != []:
+                if verification[0].numeros_tarjeta[1] != 0:
+                    ids = "id="+str(verification[0].numeros_tarjeta[0])+"&id="+str(verification[0].numeros_tarjeta[1])
 
                     self.redirect("/_verificar?"+ids+update_request)
                 else:
-                    self.redirect("/_verificar?id="+str(verification)+update_request)
+                    self.redirect("/_verificar?id="+str(verification[0].numeros_tarjeta[0])+update_request)
             else:
                 self.write("<h1>Nombre incorrecto</h1>")
         else:
             self.render("rexi.html",info=info)
 
+def add_card(card,Id,check):
+    search = db.GqlQuery("select * from Tarjeta_ID where nombre_tarjeta='"+card+"'").fetch(1)
+    if search == []:
+        if check != True:
+            card = Tarjeta_ID(nombre_tarjeta=card,numeros_tarjeta=Id)
+            card.put()
+        else:
+            return search
+    else:
+        return search
+
+class AgregarTarjeta(Handler):
+    def get(self):
+        self.render('newcard.html')
+    def post(self):
+        nombre = self.request.get("nombre_tarjeta")
+        Id = self.request.get("id_tarjeta")
+        Id2 = self.request.get("id_tarjeta2") if self.request.get("id_tarjeta2") != "" else "0"
+        if len(rexi_info(int(Id),False)) == 2 or Id2 != "0" and len(rexi_info(int(Id2),False)) == 2:
+            self.render('newcard.html')
+        elif Id.isdigit() == False or Id2.isdigit() == False:
+            self.render("newcard.html")
+        elif add_card(nombre,[int(Id),int(Id2)],True) != []:
+            self.render('newcard.html')
+        else:
+            add_card(nombre,[int(Id),int(Id2)],False)
+            self.redirect('/_addcard')
+
+class Create_Backup(Handler):
+    def get(self):
+        for e in tarjetas:
+            if type(tarjetas[e]) != list:
+                add_card(e,[tarjetas[e],0],False)
+            else:
+                add_card(e,tarjetas[e],False)
+        self.redirect('/')
+
 app = webapp2.WSGIApplication([
     ('/'+'([a-z]+)', MainHandler),
     ("/", Principal),
-    ("/_verificar", VerificadorHandler)
+    ("/_verificar", VerificadorHandler),
+    ("/_addcard", AgregarTarjeta),
+    ("/_backup", Create_Backup)
 ], debug=True)
