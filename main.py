@@ -13,8 +13,9 @@ from google.appengine.api import urlfetch
 import logging
 
 urlfetch.set_default_fetch_deadline(45)
-tarjetas = {'bdiplazacentralgold':1862,'bdiplazacentralclasica':1861,'bdiplazacentrallocal':1860,'bdibmcargogold':1864,'bdibmcargolocal':2085,'bdifundapec':1867,'bdibmcargoclasica':2084,'ademiclasica': 1791, 'vimencablackgold': 6024, 'scotiabankgold': [1775, 1776], 'scotiabankaadvantageplatinum': 1782, 'popularalmacenesiberia': 1696, 'bancamericaclasica': 2017, 'popularplatinumlocal': [1691, 1690], 'banaciplatinum': 16, 'progresointernacional': [1756, 1753], 'bhdleonmipais': 1736, 'alnapgold': 1678, 'popularmileageplus': 1704, 'scotiabankvisa': 1774, 'popularccnplus': 1703, 'apapclasicainternacional': 1766, 'bdianthonysplatinum': 1871, 'bdisignature': 1858, 'bhdleongoldpremia': 1929, 'scotiabankinfinite': 1783, 'progresoamericanexpress': 1748, 'banreservasmultimoneda': [1710, 1711], 'progresoplatinum': 1760, 'ademigoldinternacional': 1793, 'caribeplatinum': 1847, 'bhdleonclasicalocal': 1725, 'federalplatinum': 1851, 'apapstandardinternacional': 1762, 'banreservasplatinumuniverse': 1718, 'bdiplatinum': 2075, 'alnapconfiaentilocal': 4153, 'alnapconfiaentiinternacional': 4228, 'vimencaplatinum': 1814, 'bhdleonsiremasoro': 1743, 'popularplatinuminternacional': [1922, 1923], 'banreservasclasica': 1712, 'banescoclasicainternacional': 1806, 'promericalamaplazos': 1820, 'bancamericasignature': 2021, 'apapgold': 1767, 'bhdleonblackmujer': 1735, 'apapfamiliar': 1769, 'lopezdeharoclasica': 1829, 'ademiempresarialinternacional': 92, 'promericagold': 1828, 'bancamericaplatinum': 2019, 'scotiabankorange': 1785, 'bancamericagold': 2018, 'scotiabankaadvantage': 1779, 'caribeecard': 1932, 'bhdleonclasicainternacional': 1727, 'vimencaclasicalocal': 1812, 'bhdleoninfinite': 1732, 'popularmbsignaturecard': 1695, 'acapvisaclasicalocal': 1770, 'banescoplatinum': [2087, 1807], 'bhdleongold': [1730, 1729], 'bhdleongoldmlb': 1738, 'banacistandar': 116, 'acapvisagold': 1772, 'popularfcbescola': 1694, 'populargoldinternacional': [1920, 1921], 'vimencagold': 1813, 'bhdleonbeisbolinvernal': 1737, 'banescogold': 1809, 'banreservasgoldmultimoneda': 1716, 'banacigold': 130, 'banaciempresarial': 132, 'bhdleonplatinummujer': 1734, 'ademiclasicainternacional': 1792, 'lopezdeharoclubnaco': 1833, 'lopezdeharoclubhemingway': 1834, 'popularcaminantesporlavida': 1699, 'bdisignaturebmcargo': 144, 'popularsegurosuniversal': 1702, 'banescostandard': 2083, 'bdilocal': 1855, 'bhdleonclasicapremia': 1928, 'bdicrediplan': 152, 'santacruzclasica': 1786, 'alnapunaselocal': 1680, 'alnapclasicalocal': 1676, 'banreservasplatinum': 1717, 'promericaplatinum': 1826, 'popularclasicainternacional': [1918, 1919], 'caribeclasicainternacional': 1842, 'popularsuperpolasirena': 1700, 'lopezdeharogoldsgym': 1835, 'promericaspiritgold': 1816, 'alnapunionlocal': 1682, 'scotiabankmastercard': 1773, 'ademiempresarialplus': 1797, 'ademihipermercadosole': 1794, 'alnapcompramas': 4247, 'apapplatinum': [1764, 1768], 'alnapunioninternacional': 1683, 'banacicombustible': 80, 'bdianthonysclasica': 1869, 'banreservasstandard': 1713, 'scotiabankaadvantagegold': [1780, 1781], 'alnapclasicainternacional': 1677, 'ademiempresariallocal': 1796, 'acapvisaclasicainternacional': 1771, 'bhdleonstandardlocal': 1726, 'scotiabankplatinum': [1777, 1778], 'progresoamericanexpresssumaccn': 1930, 'apapgoldinternacional': 1763, 'popularblackinternacional': 1924, 'santacruzcecomsa': 1790, 'bdianthonysgold': 1870, 'bhdleongoldmujer': 1733, 'alnapunaseinternacional': 1681, 'federalgold': 1850, 'banescooro': 2088, 'lopezdeharoplatinum': 1831, 'bdiclasica': 1856, 'scotiabankpricesmartdiamond': 1931, 'federalclasica': 1849, 'bdigold': 1857, 'popularprestige': 1689, 'promericaspiritplatinum': 1815, 'lopezdeharogold': 1830, 'lopezdeharocasadeespana': 1832, 'popularikeafamily': 1698, 'caribeelite': 1846, 'banescoinfinite': 1808, 'popularclasicalocal': [1684, 1685], 'progresogold': [1757, 1754], 'progresolocal': [1755, 1752], 'banreservasinfinite': 1719, 'santacruzplatinum': 1788, 'vimencaclasicainternacional': 6023, 'scotiabankbravo': 1784, 'promericaplatinumpremium': 1821, 'caribeclasicalocal': 1840, 'bhdleonstandardinternacional': 1728, 'apapstandardlocal': 1761, 'santacruzinfinite': 1789, 'alnapconfiamaslocal': 1679, 'popularblacklocal': 1692, 'santacruzgold': 1787, 'popularorbit': 1688, 'bhdleonlacadena': 1742, 'promericainfinite': 1824, 'progresotheplatinumcard': 1750, 'vimencagoldpagatodo': 137, 'promericamisuper': 1817, 'progresoamericanexpresscasadecampoplatinum': 1751, 'banaciblack': 140, 'caribeoro': 1848, 'popularjetblue': 1705, 'apapclasicalocal': 1765, 'progresoamericanexpressgold': 1749, 'bhdleonplatinum': 1731, 'banreservasgold': [1714, 1715], 'populargoldlocal': [1686, 1687]}
-
+tarjetas = {'bdiplazacentralgold':1862,'bdiplazacentralclasica':1861,'bdiplazacentrallocal':1860,'bdibmcargogold':1864,'bdibmcargolocal':2085,'bdifundapec':1867,'bdibmcargoclasica':2084,'ademiclasica': 1791, 'vimencablackgold': 6024, 'scotiabankgold': [1775, 1776], 'scotiabankaadvantageplatinum': 1782, 'popularalmacenesiberia': 1696, 'bancamericaclasica': 2017, 'popularplatinumlocal': [1691, 1690], 'banaciplatinum': 16, 'progresointernacional': [1756, 1753], 'bhdleonmipais': 1736, 'alnapgold': 1678, 'popularmileageplus': 1704, 'scotiabankvisa': 1774, 'popularccnplus': 1703, 'apapclasicainternacional': 1766, 'bdianthonysplatinum': 1871, 'bdisignature': 1858, 'bhdleongoldpremia': 1929, 'scotiabankinfinite': 1783, 'progresoamericanexpress': 1748, 'banreservasmultimoneda': [1710, 1711], 'progresoplatinum': 1760, 'ademigoldinternacional': 1793, 'caribeplatinum': 1847, 'bhdleonclasicalocal': 1725, 'federalplatinum': 1851, 'apapstandardinternacional': 1762, 'banreservasplatinumuniverse': 1718, 'bdiplatinum': 2075, 'alnapconfiaentilocal': 4153, 'alnapconfiaentiinternacional': 4228, 'vimencaplatinum': 1814, 'bhdleonsiremasoro': 1743, 'popularplatinuminternacional': [1922, 1923], 'banreservasclasica': 1712, 'banescoclasicainternacional': 1806, 'promericalamaplazos': 1820, 'bancamericasignature': 2021, 'apapgold': 1767, 'bhdleonblackmujer': 1735, 'apapfamiliar': 1769, 'lopezdeharoclasica': 1829, 'ademiempresarialinternacional': 92, 'promericagold': 1828, 'bancamericaplatinum': 2019, 'scotiabankorange': 1785, 'bancamericagold': 2018, 'scotiabankaadvantage': 1779, 'caribeecard': 1932, 'bhdleonclasicainternacional': 1727, 'vimencaclasicalocal': 1812, 'bhdleoninfinite': 1732, 'popularmbsignaturecard': 1695, 'acapvisaclasicalocal': 1770, 'banescoplatinum': [2087, 1807], 'bhdleongold': [1730, 1729], 'bhdleongoldmlb': 1738, 'banacistandar': 116, 'acapvisagold': 1772, 'popularfcbescola': 1694, 'populargoldinternacional': [1920, 1921], 'vimencagold': 1813, 'bhdleonbeisbolinvernal': 1737, 'banescogold': 1809, 'banreservasgoldmultimoneda': 1716, 'banacigold': 130, 'banaciempresarial': 132, 'bhdleonplatinummujer': 1734, 'ademiclasicainternacional': 1792, 'lopezdeharoclubnaco': 1833, 'lopezdeharoclubhemingway': 1834, 'popularcaminantesporlavida': 1699, 'bdisignaturebmcargo': 1863, 'popularsegurosuniversal': 1702, 'banescostandard': 2083, 'bdilocal': 1855, 'bhdleonclasicapremia': 1928, 'bdicrediplan': 152, 'santacruzclasica': 1786, 'alnapunaselocal': 1680, 'alnapclasicalocal': 1676, 'banreservasplatinum': 1717, 'promericaplatinum': 1826, 'popularclasicainternacional': [1918, 1919], 'caribeclasicainternacional': 1842, 'popularsuperpolasirena': 1700, 'lopezdeharogoldsgym': 1835, 'promericaspiritgold': 1816, 'alnapunionlocal': 1682, 'scotiabankmastercard': 1773, 'ademiempresarialplus': 1797, 'ademihipermercadosole': 1794, 'alnapcompramas': 4247, 'apapplatinum': [1764, 1768], 'alnapunioninternacional': 1683, 'banacicombustible': 80, 'bdianthonysclasica': 1869, 'banreservasstandard': 1713, 'scotiabankaadvantagegold': [1780, 1781], 'alnapclasicainternacional': 1677, 'ademiempresariallocal': 1796, 'acapvisaclasicainternacional': 1771, 'bhdleonstandardlocal': 1726, 'scotiabankplatinum': [1777, 1778], 'progresoamericanexpresssumaccn': 1930, 'apapgoldinternacional': 1763, 'popularblackinternacional': 1924, 'santacruzcecomsa': 1790, 'bdianthonysgold': 1870, 'bhdleongoldmujer': 1733, 'alnapunaseinternacional': 1681, 'federalgold': 1850, 'banescooro': 2088, 'lopezdeharoplatinum': 1831, 'bdiclasica': 1856, 'scotiabankpricesmartdiamond': 1931, 'federalclasica': 1849, 'bdigold': 1857, 'popularprestige': 1689, 'promericaspiritplatinum': 1815, 'lopezdeharogold': 1830, 'lopezdeharocasadeespana': 1832, 'popularikeafamily': 1698, 'caribeelite': 1846, 'banescoinfinite': 1808, 'popularclasicalocal': [1684, 1685], 'progresogold': [1757, 1754], 'progresolocal': [1755, 1752], 'banreservasinfinite': 1719, 'santacruzplatinum': 1788, 'vimencaclasicainternacional': 6023, 'scotiabankbravo': 1784, 'promericaplatinumpremium': 1821, 'caribeclasicalocal': 1840, 'bhdleonstandardinternacional': 1728, 'apapstandardlocal': 1761, 'santacruzinfinite': 1789, 'alnapconfiamaslocal': 1679, 'popularblacklocal': 1692, 'santacruzgold': 1787, 'popularorbit': 1688, 'bhdleonlacadena': 1742, 'promericainfinite': 1824, 'progresotheplatinumcard': 1750, 'vimencagoldpagatodo': 137, 'promericamisuper': 1817, 'progresoamericanexpresscasadecampoplatinum': 1751, 'banaciblack': 140, 'caribeoro': 1848, 'popularjetblue': 1705, 'apapclasicalocal': 1765, 'progresoamericanexpressgold': 1749, 'bhdleonplatinum': 1731, 'banreservasgold': [1714, 1715], 'populargoldlocal': [1686, 1687]}
+empresas = ['bm cargo',"plaza central","lidom","mlb","la sirena","vimenca", "american airlines", "pricesmart", "orange", "bravo", "cecomsa", "plaza lama", "carrefour", "spirit", "utesa", "anthony's", "san miguel", " mbe ", "mb cargo", "unase", u"unión", "vega real", u"olé", "ccn", "gold's gym", "club hemingway", "club naco", u"casa de españa", "jetblue", "united", "seguros universal", "grupo ramos", "caminantes por la vida", "ikea", "almacenes iberia", "mercedes benz", "fcbescola"]
+aerolineas = ["delta airlines", "pawa dominicana", "dominican wings", "copa airlines", "united airlines", "avianca", "spirit", "american airlines", "air century", "venezolana", "southwest airlines", "seaborne", "jetblue", "air europa", "lan airline", "general air services", "helidosa", "aerointer", "airberlin", "aircanada","tropical aero servicios", "aserca airlines", "air france"]
 
 template_dir = os.path.join(os.path.dirname(__file__),'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -37,8 +38,12 @@ class Tarjeta_ID(db.Model):
     nombre_tarjeta = db.StringProperty(required=True)
     numeros_tarjeta = db.ListProperty(item_type=int,required=True)
 
+class Global_Instituciones(db.Model):
+    empresas = db.ListProperty(item_type=str,required=True)
+    aerolineas = db.ListProperty(item_type=str,required=True)
 
-    
+
+
 
 
 def fetch(info):
@@ -193,12 +198,12 @@ def Compara_tarjetas(info,info2,update):
 
                     ##FIJO O VARIABLE## 
         if "%" in el_ayudante["cargo_por_sobregiro"]:
-            el_real["cargoPorSobregiro"] = "Variable"
+            el_real["cargoPorSobregiro"] = "Porcentaje"
         else:
             el_real["cargoPorSobregiro"] = "Fijo"
 
         if "%" in el_ayudante["cargo_por_mora"]:
-            el_real["cargoPorMora"] = "Variable"
+            el_real["cargoPorMora"] = "Porcentaje"
         else:
             el_real["cargoPorMora"] = "Fijo"
     #SEGURO PROTECCION
@@ -246,7 +251,7 @@ def Compara_tarjetas(info,info2,update):
                 sobregiro_en_pesos = dos_valores[1]
                 sobregiro_en_dolares = dos_valores[0]
 
-            if el_real["cargoPorSobregiro"] != "Variable":
+            if el_real["cargoPorSobregiro"] != "Porcentaje":
                 el_real["cargoPorSobregiroFijoEnPesos"] = sacar_entero(sobregiro_en_pesos)
                 el_real["cargoPorSobregiroFijoEnDolares"] = sacar_entero(sobregiro_en_dolares)
             else:
@@ -258,7 +263,7 @@ def Compara_tarjetas(info,info2,update):
 
         elif "rd$" in el_ayudante["cargo_por_sobregiro"]:
             sobregiro_en_pesos = el_ayudante["cargo_por_sobregiro"]
-            if el_real["cargoPorSobregiro"] != "Variable":
+            if el_real["cargoPorSobregiro"] != "Porcentaje":
                 el_real["cargoPorSobregiroFijoEnPesos"] = sacar_entero(sobregiro_en_pesos)
                 el_real["cargoPorSobregiroFijoEnDolares"] = 0
             else:
@@ -269,7 +274,7 @@ def Compara_tarjetas(info,info2,update):
 
         elif "%" in el_ayudante["cargo_por_sobregiro"] and "rd$" not in el_ayudante["cargo_por_sobregiro"] and "usd" not in el_ayudante["cargo_por_sobregiro"]:
             sobregiro_en_pesos = el_ayudante["cargo_por_sobregiro"]
-            if el_real["cargoPorSobregiro"] != "Variable":
+            if el_real["cargoPorSobregiro"] != "Porcentaje":
                 el_real["cargoPorSobregiroFijoEnPesos"] = sacar_entero(sobregiro_en_pesos)
                 el_real["cargoPorSobregiroFijoEnDolares"] = 0
             else:
@@ -280,7 +285,7 @@ def Compara_tarjetas(info,info2,update):
 
         elif "usd" in el_ayudante["cargo_por_sobregiro"]:
             sobregiro_en_dolares = el_ayudante["cargo_por_sobregiro"]
-            if el_real["cargoPorSobregiro"] != "Variable":
+            if el_real["cargoPorSobregiro"] != "Porcentaje":
                 el_real["cargoPorSobregiroFijoEnPesos"] = 0
                 el_real["cargoPorSobregiroFijoEnDolares"] = sacar_entero(sobregiro_en_dolares)
             else:
@@ -310,7 +315,7 @@ def Compara_tarjetas(info,info2,update):
                 mora_en_pesos = dos_valores[1]
                 mora_en_dolares = dos_valores[0]
 
-            if el_real["cargoPorMora"] != "Variable":
+            if el_real["cargoPorMora"] != "Porcentaje":
                 el_real["cargoPorMoraFijoEnPesos"] = sacar_entero(mora_en_pesos)
                 el_real["cargoPorMoraFijoEnDolares"] = sacar_entero(mora_en_dolares)
             else:
@@ -322,7 +327,7 @@ def Compara_tarjetas(info,info2,update):
 
         elif "rd$" in el_ayudante["cargo_por_mora"]:
             mora_en_pesos = el_ayudante["cargo_por_mora"]
-            if el_real["cargoPorMora"] != "Variable":
+            if el_real["cargoPorMora"] != "Porcentaje":
                 el_real["cargoPorMoraFijoEnPesos"] = sacar_entero(mora_en_pesos)
                 el_real["cargoPorMoraFijoEnDolares"] = 0
             else:
@@ -334,7 +339,7 @@ def Compara_tarjetas(info,info2,update):
 
         elif "usd" in el_ayudante["cargo_por_mora"]:
             mora_en_dolares = el_ayudante["cargo_por_mora"]
-            if el_real["cargoPorMora"] != "Variable":
+            if el_real["cargoPorMora"] != "Porcentaje":
                 el_real["cargoPorMoraFijoEnPesos"] = 0
                 el_real["cargoPorMoraFijoEnDolares"] = sacar_entero(mora_en_dolares)
             else:
@@ -402,6 +407,8 @@ def Compara_tarjetas(info,info2,update):
 
         if descuentos_especificos_publica != "no":
             descuentos_especificos_publica = mayusculiza(descuentos_especificos_publica)
+            el_real["descuentoEnComerciosEspecificos"] = True
+            el_real["comerciosEnEspecifico"] = descuentos_especificos_publica
             el_real["descuentoMaximoEnComercios"] = sacar_entero(descuento_maximo) if descuento_maximo != "no encontrado" else 0
 
             
@@ -414,8 +421,8 @@ def Compara_tarjetas(info,info2,update):
 
         tipo_comercio = el_ayudante["descuentos_por_tipo_de_comercio"] 
 
-        el_real["descuentosPorTipoDeComercio"] = True if descuento_maximo != "no encontrado" and el_real["descuentoEnComerciosEspecificos"] == False else False
-        el_real["tiposDeComercios"] = "No" if el_real["descuentosPorTipoDeComercio"] == False else info["tiposDeComercios"]
+        el_real["descuentosPorTipoDeComercio"] = True if tipo_comercio != "n/a"  else False
+        el_real["tiposDeComercios"] = "No" if el_real["descuentosPorTipoDeComercio"] == False else mayusculiza(tipo_comercio)
         el_real["descuentoMaximoPorTipoDeComercio"] = 0 if el_real["descuentosPorTipoDeComercio"] == False else info["descuentoMaximoPorTipoDeComercio"]
 
         el_real["historialDeCreditoMinimoOReducido"] = ""
@@ -881,14 +888,15 @@ def BuscarInformacion(clave,donde):
                 informacion = "la sirena y supermercados pola"
             elif "la sirena" in donde:
                 informacion = "la sirena"
+            
             else:
                 informacion = "no"
         else:
             informacion = "no"
-    if clave == "descuento_tipo_por_tipo_de_comercio":
+    if clave == "descuentos_por_tipo_de_comercio":
         beneficios = donde[donde.find("beneficios:"):donde.find("||")]
         if (("descuento" in beneficios) or ("reembolso" in beneficios) or "ahorr" in beneficios or u"devolución" in donde) and "%" in beneficios:
-            if "la sirena" in donde or ("la sirena" in donde and "pola " in donde) or "nelly rent a car" in donde or "skybox" in donde or "plaza lama" in donde or "la cadena" in donde or "autozama" in donde or "almacenes iberia" in donde or "ikea" in donde or "bravo" in donde or "bm cargo" in donde or "anthony's" in donde or "unase" in donde or u"hipermercados olé" in donde or (u"unión local" in donde or u"unión internacional" in donde) or "gold's gym" in donde or "club hemingway" in donde or "club naco" in donde or u"casa de españa" in donde or "pricesmart" in donde or "plaza central" in donde:
+            if "la sirena" in donde or ("la sirena" in donde and "pola " in donde) or "nelly rent a car" in donde or "skybox" in donde or "plaza lama" in donde or "la cadena" in donde or "autozama" in donde or "almacenes iberia" in donde or "ikea" in donde or "bravo" in donde or "anthony's" in donde or "unase" in donde or u"hipermercados olé" in donde or (u"unión local" in donde or u"unión internacional" in donde) or "gold's gym" in donde or "club hemingway" in donde or "club naco" in donde or u"casa de españa" in donde or "pricesmart" in donde or "plaza central" in donde:
                 informacion = "no"
             else:
                 if "estadios" in donde:
@@ -897,6 +905,8 @@ def BuscarInformacion(clave,donde):
                     informacion = "farmacias y restaurantes"
                 elif "farmacias" in donde:
                     informacion = "farmacias"
+                elif "servicio priority" in donde:
+                    informacion = "servicio priority"
 
     if clave == "alcance_del_descuento":
         beneficios = donde[donde.find("beneficios:"):donde.find("||")]
@@ -929,7 +939,7 @@ def BuscarInformacion(clave,donde):
         else:
             informacion = "no encontrado"
     if clave == "plan_de_lealtad":
-        if ("punto" in donde or "puntos" in donde) and "bhd" not in donde and "banesco" not in donde and "banreservas" not in donde and "promerica" not in donde and "membership reward" not in donde and "trueblue" not in donde and "pola " not in donde and "caribe" not in donde:
+        if ("punto" in donde or "puntos" in donde) and "bhd" not in donde and "banesco" not in donde and "banreservas" not in donde and "promerica" not in donde and "membership reward" not in donde and "trueblue" not in donde and "pola " not in donde and "caribe" not in donde and not "bmcargopuntos" in donde:
             informacion = "puntos"
         elif "abonapunto" in donde:
             informacion = "abonapunto"
@@ -979,7 +989,7 @@ def BuscarInformacion(clave,donde):
             informacion = "no encontrado"
 
     if clave == "vencimiento_de_unidades":
-        if ("punto" in donde or "abonapunto" in donde or "milla " in donde or "bono" in donde or "llave" in donde or "estrella" in donde or "pasos" in donde or "manos" in donde or "soles" in donde):
+        if ("punto" in donde or "abonapunto" in donde or "milla " in donde or "bono" in donde or "llave" in donde or "estrella" in donde or "pasos" in donde or "manos" in donde or "soles" in donde or "sol " in donde):
             if ("unidades no vencen" in donde):
                 informacion = "no"
             else: 
@@ -1100,7 +1110,7 @@ def BuscarInformacion(clave,donde):
             informacion = informacion[informacion.find("|")+1:]
 
     if clave == "linea_aerea_vinculada":
-        aerolineas = ["delta airlines", "pawa dominicana", "dominican wings", "copa airlines", "united airlines", "avianca", "spirit", "american airlines", "air century", "venezolana", "southwest airlines", "seaborne", "jetblue", "air europa", "lan airline", "general air services", "helidosa", "aerointer", "airberlin", "aircanada","tropical aero servicios", "aserca airlines", "air france"]
+        aerolineas = db.GqlQuery("select * from Global_Instituciones").fetch(1)[0].aerolineas
         informacion = []
         for airline in aerolineas:
             if airline in donde:
@@ -1151,9 +1161,7 @@ def BuscarInformacion(clave,donde):
 
     if clave == "catalogo_de_descuentos_ocasionales":
         beneficios = donde[donde.find("beneficios:"):donde.find("||")]
-        if "bm cargo" in donde:
-            informacion = "no"
-        elif "anthony's" in donde and not "bdi" in donde:
+        if "anthony's" in donde and not "bdi" in donde:
             informacion = "no"
         elif u"hipermercados olé" in donde:
             informacion = "no"
@@ -1188,7 +1196,7 @@ def BuscarInformacion(clave,donde):
         else:
             informacion = "n/a"
     if clave == "institucion_o_empresa":
-        empresas = ["plaza central","lidom","mlb","la sirena","vimenca", "american airlines", "pricesmart", "orange", "bravo", "cecomsa", "plaza lama", "carrefour", "spirit", "utesa", "anthony's", "san miguel", " mbe ", "mb cargo", "unase", u"unión", "vega real", u"olé", "ccn", "gold's gym", "club hemingway", "club naco", u"casa de españa", "jetblue", "united", "seguros universal", "grupo ramos", "caminantes por la vida", "ikea", "almacenes iberia", "mercedes benz", "fcbescola"]
+        empresas = db.GqlQuery("select * from Global_Instituciones").fetch(1)[0].empresas
         informacion = []
         for e in empresas:
             if e in donde:
@@ -1610,6 +1618,9 @@ def add_card(card,Id,check):
     else:
         return search
 
+
+
+
 class AgregarTarjeta(Handler):
     def get(self):
         self.render('newcard.html')
@@ -1637,12 +1648,44 @@ class Create_Backup(Handler):
                 add_card(e,[tarjetas[e],0],False)
             else:
                 add_card(e,tarjetas[e],False)
+        empresas_backup = Global_Instituciones(empresas=empresas,aerolineas=aerolineas)
+        empresas_backup.put()
         self.redirect('/')
+
+def add_empresa_aerolinea(nombre,emp_aer):
+    search = db.GqlQuery("select * from Global_Instituciones").fetch(1)
+    if emp_aer == "aerolinea" and search != []:
+        if nombre not in search[0].aerolineas:
+            search[0].aerolineas.append(nombre)
+            search[0].put()
+    if emp_aer == "empresa" and search != []:
+        if nombre not in search[0].empresas:
+            search[0].empresas.append(nombre)
+            search[0].put()
+
+class Add_Emp(Handler):
+    def get(self):
+        self.render("addEmp.html")
+    def post(self):
+        empresa = self.request.get("emp_aer2")
+        aerolinea = self.request.get("emp_aer1")
+        nombre = self.request.get("name")
+        if empresa and aerolinea and nombre:
+            add_empresa_aerolinea(nombre,"aerolinea")
+            add_empresa_aerolinea(nombre,"empresa")
+        elif empresa and nombre:
+            add_empresa_aerolinea(nombre,"empresa")
+        elif aerolinea and nombre:
+            add_empresa_aerolinea(nombre,"aerolinea")
+        
+        self.redirect("/_addEmp")
+
 
 app = webapp2.WSGIApplication([
     ('/'+'([a-z]+)', MainHandler),
     ("/", Principal),
     ("/_verificar", VerificadorHandler),
     ("/_addcard", AgregarTarjeta),
-    ("/_backup", Create_Backup)
+    ("/_backup", Create_Backup),
+    ("/_addEmp", Add_Emp)
 ], debug=True)
