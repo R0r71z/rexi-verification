@@ -28,7 +28,7 @@
 	border:solid 1px;
 	position:fixed;
 	right:1px;
-	top:100px;
+	top:110px;
 	width:5%;
 	height:auto;
 	text-align:left;
@@ -70,3 +70,10 @@ input {
 	text-align:right;
 }
 
+#addnew {
+	border:solid 1px;
+	position:fixed;
+	top:50px;
+	margin-right:1px;
+	right:1px;
+}
